@@ -24,7 +24,7 @@ const ErrorImage = styled.img`
 
 `
 
-const ErrorSubtitle = styled.span`
+const ErrorSubtitle = styled.h2`
   font-weight: 500;
   font-size: 36px;
   color: #FF6060;
@@ -46,16 +46,20 @@ const ErrorLink = styled(Link)`
   @media (max-width: 767px) {   
     font-size: 14px;  
   }  
-
 `
 
+const ErrorText = styled.span`
+  @media (max-width: 767px){
+    display: block;   
+  }   
+`
 
 function Error() {
   return (
     <ErrorWrapper>
       <ErrorImage src = {Error404} alt = "error404" />
       <ErrorSubtitle>
-        Oups! La page que vous demandez n'existe pas.
+        <ErrorText>Oups! La page que</ErrorText><ErrorText>vous demandez n'existe pas.</ErrorText>
       </ErrorSubtitle>
       <ErrorLink to = "/">
             <p>Retourner sur la page d'accueil</p>
