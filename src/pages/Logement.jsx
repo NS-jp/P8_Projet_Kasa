@@ -25,9 +25,12 @@ const LogementContainer = styled.div`
   }  
 `
 const ProfileContainer = styled.div`
+  @media (max-width: 767px) {   
   display: flex; 
   flex-direction: row-reverse; 
-  justify-content: space-between;
+  justify-content: space-between;  
+  }   
+
 `
 
 const EquipmentContent = styled.ul`
