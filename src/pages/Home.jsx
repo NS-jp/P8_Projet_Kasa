@@ -9,15 +9,24 @@ const HomeWrapper = styled.div`
   flex-direction: column; 
   margin: auto;
   width: 90%;  
-
 `
 
+const TitleText = styled.span`
+ @media (max-width: 834px) { 
+  display: block; 
+  }  
+` 
+
 function Home() {
+  const titleContent = (<><TitleText>Chez vous,</TitleText><TitleText> partout et ailleurs</TitleText> </>)
+
+
   return (
   <HomeWrapper>
       <Banner
        image = {Image_banner}
-       title = "Chez vous, partout et ailleurs"        
+       title = {titleContent}
+       /*title = "Chez vous, partout et ailleurs"*/        
       />
       <Card/> 
   </HomeWrapper>

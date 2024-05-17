@@ -33,10 +33,9 @@ const BannerTitle = styled.h1`
   font-size: 48px;
   color: #FFFFFF; 
   
-  @media (max-width: 767px) { 
+  @media (max-width: 834px) { 
     font-size: 24px;
     padding-left: 20px;  
-    width: 60%; 
   }  
 `
 
