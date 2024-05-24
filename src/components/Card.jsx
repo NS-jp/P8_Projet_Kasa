@@ -12,13 +12,12 @@ const CardWrapper = styled.div`
     margin-bottom: 60px; 
     padding: 50px;  
 
-    @media (max-width: 767px) { 
+    @media (max-width: 1024px) { 
     display: flex; 
     flex-direction: column;
     row-gap: 20px; 
     padding: 0;  
   }
-
 `
 
 const CardContainer = styled.div` 
@@ -90,7 +89,7 @@ function Card () {
     return (
         <CardWrapper>
             {isDataLoading? (
-                <Loader/>
+                <Loader data-testid = 'loader'/>
             ) : (
             LogementData.map((logement)=> (
                 <CardContainer key = {logement.id}>
