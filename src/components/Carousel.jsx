@@ -84,9 +84,9 @@ function Carousel ({images}){
                 <>
                 <ArrowBackImage src = {ArrowBack} alt ="Arrow back" onClick= {goToPreviousSlide}/>
                 <ArrowForwardImage src = {ArrowForward} alt="Arrow forward" onClick = {goToNextSlide}/>
-                </>
-            )}
-            <SlideIndicator> {`${currentIndex + 1} / ${images.length}`} </SlideIndicator>     
+                <SlideIndicator> {`${currentIndex + 1} / ${images.length}`} </SlideIndicator>
+            </>
+            )}     
         </CarouselContainer> 
 
     )
