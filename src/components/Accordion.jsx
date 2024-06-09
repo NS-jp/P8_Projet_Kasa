@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, {useState} from 'react'; 
+import React, {useState, useEffect, useRef} from 'react'; 
 import ChevronUp from '../assets/Vector.png'
 
 const AccordionWrapper = styled.div`
@@ -26,9 +26,13 @@ const AccordionTitle = styled.span`
 `
 
 const ImgRotate = styled.img`
-  transform: rotate(180deg);
   max-width: 32px; 
   max-height: 32px;  
+  transition: transform 0.4s ease-out; 
+  
+&.rotate{
+    transform: rotate(-180deg); 
+  }
 `
 const AccordionImg = styled.span`
   font-size: 24px;
@@ -36,7 +40,6 @@ const AccordionImg = styled.span`
   @media (max-width: 767px) {   
     font-size: 13px; 
   } 
-  
 `
 
 const AccordionContent = styled.div`
@@ -44,26 +47,39 @@ const AccordionContent = styled.div`
   color: #000000;
   padding: 20px 20px 20px 15px;
   border-radius: 5px;  
-
+  max-height:  0;
+  overflow: hidden; 
+  transition: max-height 1s ease-out; 
+  
   @media (max-width: 767px) {   
     font-size: 12px; 
   } 
-
-
-
 `  
 
 
 function Accordion({title, content}) {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(false)
+  const [maxHeight, setMaxHeight] = useState ('0px')
+  const contentRef = useRef(null)
+
+  useEffect (() => {
+    if (isActive) {
+      setMaxHeight(`${contentRef.current.scrollHeight}px`)
+    } else {
+        setMaxHeight('0px')
+    }
+    }, [isActive])
+
 
   return (    
   <React.Fragment> 
     <AccordionWrapper onClick = {() => setIsActive(!isActive)}>
       <AccordionTitle>{title}</AccordionTitle>
-      <AccordionImg>{isActive?  <ImgRotate src = {ChevronUp} alt="chevron down"/>: <img src = {ChevronUp} alt="chevron up"/>}</AccordionImg>
+      <AccordionImg>
+        <ImgRotate src = {ChevronUp} alt="chevron down" className = {isActive? 'rotate': ''}/>
+      </AccordionImg>
     </AccordionWrapper>
-    {isActive && <AccordionContent>{content}</AccordionContent>}
+    {isActive && <AccordionContent ref={contentRef} style={{maxHeight}}>{content}</AccordionContent>}
   </React.Fragment>
   )
 } 
